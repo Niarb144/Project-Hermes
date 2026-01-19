@@ -1,0 +1,81 @@
+[gd_scene load_steps=16 format=3 uid="uid://cdrf32ubs8x3"]
+
+[ext_resource type="Script" uid="uid://dcfwrtmtjmh5p" path="res://asteroid.gd" id="1_so5nw"]
+[ext_resource type="Texture2D" uid="uid://c7colw4ck4jj4" path="res://Assets/Enemies/asteroid/frame0000.png" id="2_c0vxc"]
+[ext_resource type="Texture2D" uid="uid://b4j4qyjysbrjh" path="res://Assets/Enemies/asteroid/frame0001.png" id="3_nd6fg"]
+[ext_resource type="Texture2D" uid="uid://caotmbfc2l3t5" path="res://Assets/Enemies/asteroid/frame0002.png" id="4_2o3jy"]
+[ext_resource type="Texture2D" uid="uid://cewiesr8k0ulu" path="res://Assets/Enemies/asteroid/frame0003.png" id="5_buhpc"]
+[ext_resource type="Texture2D" uid="uid://dwka0drf6owk0" path="res://Assets/Enemies/asteroid/frame0004.png" id="6_tsol6"]
+[ext_resource type="Texture2D" uid="uid://cwi0y4a7ih8au" path="res://Assets/Enemies/asteroid/frame0005.png" id="7_88ihi"]
+[ext_resource type="Texture2D" uid="uid://p6c03rjaittf" path="res://Assets/Enemies/asteroid/frame0006.png" id="8_xtbm4"]
+[ext_resource type="Texture2D" uid="uid://s42ghhphsf6i" path="res://Assets/Enemies/asteroid/frame0007.png" id="9_lo16g"]
+[ext_resource type="Texture2D" uid="uid://co8y53eesg3ya" path="res://Assets/Enemies/asteroid/frame0008.png" id="10_y1e4a"]
+[ext_resource type="Texture2D" uid="uid://cq2bfe6eadevg" path="res://Assets/Enemies/asteroid/frame0009.png" id="11_oettg"]
+[ext_resource type="Texture2D" uid="uid://csc3bm83gs4ki" path="res://Assets/Enemies/asteroid/frame0010.png" id="12_kee1k"]
+[ext_resource type="AudioStream" uid="uid://dti5xooevcqh0" path="res://Assets/Audio/Enemies/explosion1.wav" id="13_c0vxc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jheou"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_c0vxc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nd6fg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2o3jy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_buhpc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tsol6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_88ihi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xtbm4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_lo16g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_y1e4a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_oettg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_kee1k")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vphgj"]
+radius = 11.0
+
+[node name="asteroid" type="Area2D"]
+position = Vector2(16, 17)
+script = ExtResource("1_so5nw")
+speed = 80.0
+max_health = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_jheou")
+animation = &"spin"
+frame = 6
+frame_progress = 0.572761
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_vphgj")
+
+[node name="Explode" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_c0vxc")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

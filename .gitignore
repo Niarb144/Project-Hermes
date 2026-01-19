@@ -1,0 +1,21 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Godot generated files
+.godot/
+.import/
+
+# Exported builds
+export/
+builds/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Mono / C#
+.mono/

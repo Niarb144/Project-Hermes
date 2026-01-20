@@ -10,9 +10,10 @@ extends CharacterBody2D
 
 @onready var shoot_sound = $ShootSound
 
+signal player_died
+
 var can_shoot := true
 var health: int
-
 var screen_size: Vector2
 
 func _ready():
@@ -62,4 +63,9 @@ func take_damage(amount: int):
 		die()
 		
 func die():
+	emit_signal("player_died")
 	queue_free()
+
+
+func _on_player_died() -> void:
+	pass # Replace with function body.

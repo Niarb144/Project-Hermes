@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://blmpgrabglcj4"]
+
+[ext_resource type="Texture2D" uid="uid://bjlx43hry5jdj" path="res://Assets/Enemies/shooter/shooter1.png" id="1_icgds"]
+[ext_resource type="Script" uid="uid://bwa6g2imroa0r" path="res://Scenes/enemy_shooter.gd" id="1_mjlx5"]
+[ext_resource type="PackedScene" uid="uid://c0vll6y0mfsn4" path="res://Scenes/enemy_bullet.tscn" id="2_57vpb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mjlx5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_icgds")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_57vpb"]
+radius = 19.0
+height = 52.0
+
+[node name="EnemyShooter" type="Area2D"]
+script = ExtResource("1_mjlx5")
+bullet_scene = ExtResource("2_57vpb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.06, 0.06)
+sprite_frames = SubResource("SpriteFrames_mjlx5")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -12)
+shape = SubResource("CapsuleShape2D_57vpb")
+
+[node name="Gun" type="Marker2D" parent="."]
+position = Vector2(0, -40)
+
+[node name="ShootTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

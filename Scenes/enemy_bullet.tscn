@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0vll6y0mfsn4"]
+
+[ext_resource type="Script" uid="uid://dspruaaibr8jf" path="res://enemy_bullet.gd" id="1_54jiv"]
+[ext_resource type="Texture2D" uid="uid://bab4e4f4ogudn" path="res://Assets/Enemies/shooter/red_laser.png" id="2_b6yqb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_72t2l"]
+radius = 3.0
+
+[node name="EnemyBullet" type="Area2D" groups=["enemy_bullets"]]
+script = ExtResource("1_54jiv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_b6yqb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_72t2l")

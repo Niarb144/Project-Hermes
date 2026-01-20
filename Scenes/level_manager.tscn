@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwadn886h2j3n"]
+
+[ext_resource type="Script" uid="uid://bx77mqt2wg807" path="res://Scenes/level_manager.gd" id="1_f6wcy"]
+[ext_resource type="PackedScene" uid="uid://cdrf32ubs8x3" path="res://Scenes/asteroid.tscn" id="2_q361b"]
+[ext_resource type="PackedScene" uid="uid://blmpgrabglcj4" path="res://Scenes/enemy_shooter.tscn" id="3_1g1tw"]
+
+[node name="LevelManager" type="Node" node_paths=PackedStringArray("enemy_spawner")]
+script = ExtResource("1_f6wcy")
+enemy_spawner = NodePath(".")
+asteroid_enemy = ExtResource("2_q361b")
+shooter_enemy = ExtResource("3_1g1tw")
+boss_enemy = ExtResource("3_1g1tw")

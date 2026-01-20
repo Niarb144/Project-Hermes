@@ -20,7 +20,7 @@ animations = [{
 radius = 14.0
 height = 62.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(572, 474)
 script = ExtResource("1_cvnsp")
 bullet_scene = ExtResource("2_6t5aa")
@@ -37,7 +37,7 @@ shape = SubResource("CapsuleShape2D_cvnsp")
 [node name="Gun" type="Marker2D" parent="."]
 position = Vector2(1, -38)
 
-[node name="ShootSound" type="AudioStreamPlayer2D" parent="." groups=["player"]]
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_vgqql")
 volume_db = -36.661
 pitch_scale = 2.03

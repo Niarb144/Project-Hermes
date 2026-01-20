@@ -1,7 +1,5 @@
 extends Node2D
 
-@export var enemy_scene: PackedScene
-
 @export var min_spawn_delay := 0.5
 @export var max_spawn_delay := 1.5
 
@@ -10,22 +8,24 @@ extends Node2D
 
 @export var horizontal_margin := 40
 
-
 var screen_size: Vector2
-var spawning := true
+var spawning := false
 var last_region := -1
-
 
 func _ready():
 	screen_size = get_viewport_rect().size
-	spawn_loop()
+
 	
-func spawn_loop():
+func spawn_loop(enemy_scene: PackedScene):
+	spawning = true
 	while spawning:
-		spawn_enemy()
-		await get_tree().create_timer(randf_range(min_spawn_delay,max_spawn_delay)).timeout
+		spawn_enemy(enemy_scene)
+		await get_tree().create_timer(
+			randf_range(min_spawn_delay, max_spawn_delay)
+		).timeout
+
 		
-func spawn_enemy():
+func spawn_enemy(enemy_scene: PackedScene):
 	var enemy = enemy_scene.instantiate()
 	
 	# Divide screen into 3 regions
@@ -64,7 +64,8 @@ func spawn_enemy():
 
 	enemy.speed = randf_range(min_speed, max_speed)
 
-	get_parent().add_child(enemy)
+	get_parent().add_child.call_deferred(enemy)
+	return enemy
 
 	
 func stop():

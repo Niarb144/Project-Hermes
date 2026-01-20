@@ -6,3 +6,8 @@
 [node name="EnemySpawner" type="Node2D"]
 script = ExtResource("1_4l55s")
 enemy_scene = ExtResource("2_8h7h8")
+min_spawn_delay = null
+max_spawn_delay = null
+min_speed = null
+max_speed = null
+horizontal_margin = null

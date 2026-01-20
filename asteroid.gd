@@ -9,6 +9,8 @@ extends Area2D
 @onready var explode_sound = $Explode
 @onready var anim = $AnimatedSprite2D
 
+signal enemy_died
+
 var health: int
 var screen_size: Vector2
 
@@ -39,6 +41,7 @@ func hit_flash():
 	anim.modulate = Color(1, 1, 1, 1)
 	
 func die():
+	emit_signal("enemy_died")
 	anim.stop()
 	queue_free()
 

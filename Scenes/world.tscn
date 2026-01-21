@@ -13,6 +13,7 @@
 [node name="StarField" parent="." instance=ExtResource("1_a02cp")]
 
 [node name="Player" parent="." instance=ExtResource("3_5a7ea")]
+collision_mask = 2
 
 [node name="EnemySpawner" parent="." instance=ExtResource("5_fo5ed")]
 min_spawn_delay = 0.5

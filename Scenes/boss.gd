@@ -8,7 +8,7 @@ signal enemy_died
 @export var entry_y := 120.0
 
 @export var bullet_scene: PackedScene
-@export var fire_rate := 0.5
+@export var fire_rate := 0.2
 
 var health: int
 var entering := true

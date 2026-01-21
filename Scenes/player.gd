@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-@export var max_health := 3
+@export var max_health := 5
 @export var speed := 350.0
-@export var acceleration := 1200.0
+@export var acceleration := 1400.0
 @export var friction := 900.0
 
 @export var bullet_scene: PackedScene
@@ -12,12 +12,15 @@ extends CharacterBody2D
 
 signal player_died
 
+
 var can_shoot := true
 var health: int
 var screen_size: Vector2
 
 func _ready():
 	screen_size = get_viewport_rect().size
+	health = max_health
+	add_to_group("player")
 
 func _physics_process(delta):
 	var direction := Vector2(

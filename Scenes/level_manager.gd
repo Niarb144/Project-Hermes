@@ -104,7 +104,7 @@ func spawn_boss():
 		-150
 	)
 	boss.enemy_died.connect(_on_boss_died, CONNECT_ONE_SHOT)
-	get_parent().add_child(boss)
+	get_parent().add_child.call_deferred(boss)
 
 
 func _on_boss_died():

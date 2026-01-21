@@ -8,6 +8,7 @@ radius = 6.0
 height = 62.0
 
 [node name="EnemyBullet" type="Area2D" groups=["enemy_bullets"]]
+collision_layer = 2
 script = ExtResource("1_54jiv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -16,3 +17,5 @@ texture = ExtResource("2_b6yqb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_72t2l")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

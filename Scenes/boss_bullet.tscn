@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnprby2ns4gom"]
+
+[ext_resource type="Script" uid="uid://c20u3b5hyqonc" path="res://Scenes/boss_bullet.gd" id="1_u23ew"]
+[ext_resource type="Texture2D" uid="uid://c5kdnx7fpnqcf" path="res://Assets/Enemies/shooter/blue_laser.png" id="2_3euku"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_72t2l"]
+radius = 6.0
+height = 62.0
+
+[node name="BossBullet" type="Area2D" groups=["enemy_bullets"]]
+script = ExtResource("1_u23ew")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1, 0.9)
+texture = ExtResource("2_3euku")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_72t2l")

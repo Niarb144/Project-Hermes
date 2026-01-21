@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://bacxlcnkco4h8"]
+
+[ext_resource type="Texture2D" uid="uid://bjlx43hry5jdj" path="res://Assets/Enemies/shooter/shooter1.png" id="1_0154r"]
+[ext_resource type="Script" uid="uid://dxsyijr233xrf" path="res://Scenes/boss.gd" id="1_cxrok"]
+[ext_resource type="PackedScene" uid="uid://bnprby2ns4gom" path="res://Scenes/boss_bullet.tscn" id="2_ukjjc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cxrok"]
+radius = 75.02666
+height = 297.67276
+
+[node name="Boss" type="Area2D"]
+position = Vector2(-1, 16)
+rotation = -3.1460705
+script = ExtResource("1_cxrok")
+bullet_scene = ExtResource("2_ukjjc")
+
+[node name="AnimatedSprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.9999999, -2.9999998)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_0154r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -43)
+rotation = -1.5729369
+shape = SubResource("CapsuleShape2D_cxrok")
+
+[node name="Gun" type="Marker2D" parent="."]
+position = Vector2(1.6089724, -135.99417)
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

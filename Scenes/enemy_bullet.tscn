@@ -4,7 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bab4e4f4ogudn" path="res://Assets/Enemies/shooter/red_laser.png" id="2_b6yqb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_72t2l"]
-radius = 3.0
+radius = 6.0
+height = 62.0
 
 [node name="EnemyBullet" type="Area2D" groups=["enemy_bullets"]]
 script = ExtResource("1_54jiv")

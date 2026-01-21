@@ -2,13 +2,13 @@ extends Area2D
 
 signal enemy_died
 
-@export var max_health := 3 
+@export var max_health := 30
 @export var entry_speed := 120.0
 @export var horizontal_speed := 150.0
 @export var entry_y := 120.0
 
 @export var bullet_scene: PackedScene
-@export var fire_rate := 0.8
+@export var fire_rate := 0.5
 
 var health: int
 var entering := true
@@ -17,7 +17,7 @@ var screen_size: Vector2
 
 @onready var gun = $Gun
 @onready var shoot_timer := $ShootTimer
-@onready var sprite := $AnimatedSprite2D
+@onready var sprite := $Sprite2D
 
 func _ready():
 	health = max_health
@@ -88,7 +88,6 @@ func die():
 	shoot_timer.stop()
 	emit_signal("enemy_died")
 	queue_free()
-
 
 # -----------------------
 # Collisions

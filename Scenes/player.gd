@@ -6,12 +6,12 @@ extends CharacterBody2D
 @export var friction := 900.0
 
 @export var bullet_scene: PackedScene
-@export var fire_rate := 0.2   # seconds between shots
+@export var fire_rate := 0.4   # seconds between shots
 
 @onready var shoot_sound = $ShootSound
 
 signal player_died
-
+signal health_changed(current, max)
 
 var can_shoot := true
 var health: int
@@ -20,6 +20,7 @@ var screen_size: Vector2
 func _ready():
 	screen_size = get_viewport_rect().size
 	health = max_health
+	emit_signal("health_changed", health, max_health)
 	add_to_group("player")
 
 func _physics_process(delta):
@@ -62,6 +63,9 @@ func shoot():
 	
 func take_damage(amount: int):
 	health -= amount
+	hit_flash()
+	emit_signal("health_changed", health, max_health)
+	
 	if health <= 0:
 		die()
 		
@@ -69,6 +73,10 @@ func die():
 	emit_signal("player_died")
 	queue_free()
 
+func hit_flash():
+	modulate = Color(1, 0.4, 0.4)
+	await get_tree().create_timer(0.05).timeout
+	modulate = Color.WHITE
 
 func _on_player_died() -> void:
 	pass # Replace with function body.

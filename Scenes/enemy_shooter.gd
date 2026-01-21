@@ -54,9 +54,9 @@ func take_damage(amount: int):
 		die()
 		
 func hit_flash():
-	anim.modulate = Color.WHITE
+	modulate = Color(1, 0.4, 0.4)
 	await get_tree().create_timer(0.05).timeout
-	anim.modulate = Color(1, 1, 1)
+	modulate = Color.WHITE
 
 func die():
 	emit_signal("enemy_died")

@@ -81,8 +81,14 @@ func shoot():
 # -----------------------
 func take_damage(amount: int):
 	health -= amount
+	hit_flash()
 	if health <= 0:
 		die()
+		
+func hit_flash():
+	modulate = Color(1, 0.4, 0.4)
+	await get_tree().create_timer(0.05).timeout
+	modulate = Color.WHITE
 
 func die():
 	shoot_timer.stop()

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2031hbmibtq1"]
+[gd_scene load_steps=7 format=3 uid="uid://b2031hbmibtq1"]
 
 [ext_resource type="PackedScene" uid="uid://bqgikjg4h2sog" path="res://Scenes/star_field.tscn" id="1_a02cp"]
 [ext_resource type="PackedScene" uid="uid://08rtuo4m7ht0" path="res://Scenes/background.tscn" id="1_go701"]
 [ext_resource type="PackedScene" uid="uid://eomq2mmuv6st" path="res://Scenes/player.tscn" id="3_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://bj155npdqbgjm" path="res://Scenes/enemy_spawner.tscn" id="5_fo5ed"]
 [ext_resource type="PackedScene" uid="uid://bwadn886h2j3n" path="res://Scenes/level_manager.tscn" id="6_5ukr8"]
+[ext_resource type="PackedScene" uid="uid://ba2ibyjwtghn3" path="res://Scenes/hud.tscn" id="6_o06y3"]
 
 [node name="World" type="Node2D"]
 
@@ -13,7 +14,6 @@
 [node name="StarField" parent="." instance=ExtResource("1_a02cp")]
 
 [node name="Player" parent="." instance=ExtResource("3_5a7ea")]
-collision_mask = 2
 
 [node name="EnemySpawner" parent="." instance=ExtResource("5_fo5ed")]
 min_spawn_delay = 0.5
@@ -22,5 +22,8 @@ min_speed = 120.0
 max_speed = 220.0
 horizontal_margin = 40
 
-[node name="LevelManager" parent="." node_paths=PackedStringArray("enemy_spawner") instance=ExtResource("6_5ukr8")]
+[node name="LevelManager" parent="." node_paths=PackedStringArray("enemy_spawner", "hud") instance=ExtResource("6_5ukr8")]
 enemy_spawner = NodePath("../EnemySpawner")
+hud = NodePath("../HUD")
+
+[node name="HUD" parent="." instance=ExtResource("6_o06y3")]

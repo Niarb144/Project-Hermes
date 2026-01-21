@@ -4,6 +4,8 @@ extends Node
 @export var asteroid_enemy: PackedScene
 @export var shooter_enemy: PackedScene
 @export var boss_enemy: PackedScene
+@export var hud: CanvasLayer
+
 
 # Wave definitions
 var level_1_waves = [
@@ -23,6 +25,9 @@ var wave_ending := false
 
 func _ready():
 	var player = get_tree().get_first_node_in_group("player")
+	#$HUD.connect_player(player)
+	if player and hud:
+		hud.call_deferred("connect_player", player)
 	if player:
 		player.player_died.connect(_on_player_died)
 	start_level_1()

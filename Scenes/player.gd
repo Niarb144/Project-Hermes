@@ -9,6 +9,7 @@ extends CharacterBody2D
 @export var fire_rate := 0.4   # seconds between shots
 
 @onready var shoot_sound = $ShootSound
+@onready var engine_sound = $Engine
 
 signal player_died
 signal health_changed(current, max)
@@ -22,6 +23,7 @@ func _ready():
 	health = max_health
 	emit_signal("health_changed", health, max_health)
 	add_to_group("player")
+	engine_sound.play()
 
 func _physics_process(delta):
 	var direction := Vector2(
@@ -71,6 +73,11 @@ func take_damage(amount: int):
 		
 func die():
 	emit_signal("player_died")
+	
+	for child in get_children():
+		if child is AudioStreamPlayer or child is AudioStreamPlayer2D:
+			child.stop()
+
 	queue_free()
 
 func hit_flash():
@@ -80,3 +87,4 @@ func hit_flash():
 
 func _on_player_died() -> void:
 	pass # Replace with function body.
+	

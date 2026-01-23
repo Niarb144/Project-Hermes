@@ -56,7 +56,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vphgj"]
-radius = 11.0
+radius = 29.0
 
 [node name="asteroid" type="Area2D"]
 position = Vector2(16, 17)
@@ -65,14 +65,14 @@ script = ExtResource("1_so5nw")
 max_health = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.05, 0.05)
+scale = Vector2(0.12, 0.12)
 sprite_frames = SubResource("SpriteFrames_jheou")
 animation = &"spin"
 frame = 6
 frame_progress = 0.572761
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -5)
+position = Vector2(-2, -13)
 shape = SubResource("CircleShape2D_vphgj")
 
 [node name="Explode" type="AudioStreamPlayer2D" parent="."]

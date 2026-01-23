@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://eomq2mmuv6st"]
+[gd_scene load_steps=8 format=3 uid="uid://eomq2mmuv6st"]
 
 [ext_resource type="Script" uid="uid://dbp6kqhi52pbl" path="res://Scenes/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://o34oglkp2i3c" path="res://Assets/Player/xerxes1.png" id="1_v0iea"]
 [ext_resource type="PackedScene" uid="uid://ca28xpys1ue68" path="res://Scenes/bullet.tscn" id="2_6t5aa"]
 [ext_resource type="AudioStream" uid="uid://vsa7ee2facnp" path="res://Assets/Audio/Player/laser1.wav" id="4_vgqql"]
+[ext_resource type="AudioStream" uid="uid://cu4hsnl60uyf4" path="res://Assets/Audio/Player/spaceengine.wav" id="5_fkybt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cvnsp"]
 animations = [{
@@ -42,3 +43,6 @@ position = Vector2(1, -38)
 stream = ExtResource("4_vgqql")
 volume_db = -36.661
 pitch_scale = 2.03
+
+[node name="Engine" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_fkybt")

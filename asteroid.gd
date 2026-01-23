@@ -1,8 +1,8 @@
 extends Area2D
 
 @export var speed := 80.0
-@export var max_health := 1
-@export var contact_damage := 1
+@export var max_health := 0.5
+@export var contact_damage := 0.5
 @export var direction := Vector2.DOWN
 
 

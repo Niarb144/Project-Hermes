@@ -5,6 +5,8 @@ extends Node
 @export var shooter_enemy: PackedScene
 @export var boss_enemy: PackedScene
 @export var hud: CanvasLayer
+@export var game_over_ui: CanvasLayer
+
 
 
 # Wave definitions
@@ -122,6 +124,10 @@ func _on_boss_died():
 func _on_player_died():
 	player_alive = false
 	spawning = false
+	
+	if game_over_ui:
+		game_over_ui.show_game_over(enemies_killed, enemies_to_kill)
+		
 	print("GAME OVER")
 
 

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dbccwbgl7myms"
+path="res://.godot/imported/Walen - Wanderer (freetouse.com).mp3-38fc2da182c0f58e8851080248bdb54d.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Walen - Wanderer (freetouse.com).mp3"
+dest_files=["res://.godot/imported/Walen - Wanderer (freetouse.com).mp3-38fc2da182c0f58e8851080248bdb54d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

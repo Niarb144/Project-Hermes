@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2031hbmibtq1"]
+[gd_scene load_steps=9 format=3 uid="uid://b2031hbmibtq1"]
 
 [ext_resource type="PackedScene" uid="uid://bqgikjg4h2sog" path="res://Scenes/star_field.tscn" id="1_a02cp"]
 [ext_resource type="PackedScene" uid="uid://08rtuo4m7ht0" path="res://Scenes/background.tscn" id="1_go701"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bj155npdqbgjm" path="res://Scenes/enemy_spawner.tscn" id="5_fo5ed"]
 [ext_resource type="PackedScene" uid="uid://bwadn886h2j3n" path="res://Scenes/level_manager.tscn" id="6_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://ba2ibyjwtghn3" path="res://Scenes/hud.tscn" id="6_o06y3"]
+[ext_resource type="PackedScene" uid="uid://bk4ov78wur0xf" path="res://Scenes/pause_menu.tscn" id="7_k7acu"]
 [ext_resource type="PackedScene" uid="uid://s5d24gt1pmvx" path="res://Scenes/game_over_ui.tscn" id="7_o06y3"]
 
 [node name="World" type="Node2D"]
@@ -29,5 +30,7 @@ hud = NodePath("../HUD")
 game_over_ui = NodePath("../GameOverUI")
 
 [node name="HUD" parent="." instance=ExtResource("6_o06y3")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("7_k7acu")]
 
 [node name="GameOverUI" parent="." instance=ExtResource("7_o06y3")]

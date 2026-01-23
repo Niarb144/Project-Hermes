@@ -23,6 +23,10 @@ var enemies_killed := 0
 var player_alive := true
 var spawning := false
 var wave_ending := false
+var boss_spawned := false
+var boss_defeated := false
+var game_over := false
+
 
 
 func _ready():
@@ -105,6 +109,9 @@ func _on_enemy_died():
 # Boss handling
 # --------------------------
 func spawn_boss():
+	boss_spawned = true
+	boss_defeated = false
+	
 	var boss = boss_enemy.instantiate()
 	boss.position = Vector2(
 		get_viewport().size.x / 2,
@@ -115,24 +122,39 @@ func spawn_boss():
 
 
 func _on_boss_died():
+	boss_defeated = true
 	level_complete()
-
 
 # --------------------------
 # Player death
 # --------------------------
 func _on_player_died():
 	player_alive = false
+	game_over = true
 	spawning = false
 	
 	if game_over_ui:
-		game_over_ui.show_game_over(enemies_killed, enemies_to_kill)
+		game_over_ui.show_game_over(get_level_progress())
 		
 	print("GAME OVER")
-
 
 # --------------------------
 # Level complete
 # --------------------------
 func level_complete():
 	print("LEVEL COMPLETE!")
+	
+func get_level_progress() -> float:
+	var wave_progress := enemies_killed / float(enemies_to_kill)
+
+	# Clamp safety
+	wave_progress = clamp(wave_progress, 0.0, 1.0)
+
+	var progress := wave_progress * 0.66
+
+	if boss_spawned:
+		if boss_defeated:
+			progress += 0.34
+		# else: boss alive → no extra progress
+
+	return progress

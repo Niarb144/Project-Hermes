@@ -2,13 +2,13 @@ extends Area2D
 
 signal enemy_died
 
-@export var max_health := 30
+@export var max_health := 5
 @export var entry_speed := 120.0
 @export var horizontal_speed := 150.0
 @export var entry_y := 120.0
 
 @export var bullet_scene: PackedScene
-@export var fire_rate := 0.2
+@export var fire_rate := 0.8
 
 var health: int
 var entering := true

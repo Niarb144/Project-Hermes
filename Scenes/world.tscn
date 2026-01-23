@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2031hbmibtq1"]
+[gd_scene load_steps=10 format=3 uid="uid://b2031hbmibtq1"]
 
 [ext_resource type="PackedScene" uid="uid://bqgikjg4h2sog" path="res://Scenes/star_field.tscn" id="1_a02cp"]
 [ext_resource type="PackedScene" uid="uid://08rtuo4m7ht0" path="res://Scenes/background.tscn" id="1_go701"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ba2ibyjwtghn3" path="res://Scenes/hud.tscn" id="6_o06y3"]
 [ext_resource type="PackedScene" uid="uid://bk4ov78wur0xf" path="res://Scenes/pause_menu.tscn" id="7_k7acu"]
 [ext_resource type="PackedScene" uid="uid://s5d24gt1pmvx" path="res://Scenes/game_over_ui.tscn" id="7_o06y3"]
+[ext_resource type="PackedScene" uid="uid://mpr0es01i6p4" path="res://Scenes/level_complete_menu.tscn" id="8_5v1tr"]
 
 [node name="World" type="Node2D"]
 
@@ -24,13 +25,17 @@ min_speed = 120.0
 max_speed = 220.0
 horizontal_margin = 40
 
-[node name="LevelManager" parent="." node_paths=PackedStringArray("enemy_spawner", "hud", "game_over_ui") instance=ExtResource("6_5ukr8")]
+[node name="LevelManager" parent="." node_paths=PackedStringArray("enemy_spawner", "hud", "game_over_ui", "level_complete_menu") instance=ExtResource("6_5ukr8")]
 enemy_spawner = NodePath("../EnemySpawner")
 hud = NodePath("../HUD")
 game_over_ui = NodePath("../GameOverUI")
+level_complete_menu = NodePath("../LevelCompleteMenu")
 
 [node name="HUD" parent="." instance=ExtResource("6_o06y3")]
 
 [node name="PauseMenu" parent="." instance=ExtResource("7_k7acu")]
+
+[node name="LevelCompleteMenu" parent="." node_paths=PackedStringArray("level_manager") instance=ExtResource("8_5v1tr")]
+level_manager = NodePath("../LevelManager")
 
 [node name="GameOverUI" parent="." instance=ExtResource("7_o06y3")]

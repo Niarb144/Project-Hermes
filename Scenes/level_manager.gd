@@ -6,6 +6,9 @@ extends Node
 @export var boss_enemy: PackedScene
 @export var hud: CanvasLayer
 @export var game_over_ui: CanvasLayer
+@export var level_complete_menu: CanvasLayer
+@export var next_level_path: String
+
 
 
 
@@ -142,7 +145,10 @@ func _on_player_died():
 # Level complete
 # --------------------------
 func level_complete():
-	print("LEVEL COMPLETE!")
+	if level_complete_menu:
+		level_complete_menu.show_menu()
+	else:
+		print("LEVEL COMPLETE (menu missing)")
 	
 func get_level_progress() -> float:
 	var wave_progress := enemies_killed / float(enemies_to_kill)
@@ -158,3 +164,9 @@ func get_level_progress() -> float:
 		# else: boss alive → no extra progress
 
 	return progress
+	
+func load_next_level():
+	if next_level_path != "":
+		get_tree().change_scene_to_file(next_level_path)
+	else:
+		print("No next level assigned")

@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://mpr0es01i6p4"]
+
+[ext_resource type="Script" uid="uid://bwltlcl8l7yyy" path="res://level_complete_menu.gd" id="1_n8sh4"]
+[ext_resource type="FontFile" uid="uid://75i2xeboijlb" path="res://Assets/Fonts/Audiowide-Regular.ttf" id="2_gu4vj"]
+
+[node name="LevelCompleteMenu" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_n8sh4")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 269.0
+offset_top = 116.0
+offset_right = 935.0
+offset_bottom = 199.0
+theme_override_fonts/font = ExtResource("2_gu4vj")
+theme_override_font_sizes/font_size = 64
+text = "LEVEL COMPLETE"
+
+[node name="NextLevelButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 302.0
+offset_top = 278.0
+offset_right = 310.0
+offset_bottom = 286.0
+theme_override_fonts/font = ExtResource("2_gu4vj")
+theme_override_font_sizes/font_size = 32
+text = "Next Level"
+
+[node name="MainMenuButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 602.0
+offset_top = 278.0
+offset_right = 799.0
+offset_bottom = 328.0
+theme_override_fonts/font = ExtResource("2_gu4vj")
+theme_override_font_sizes/font_size = 32
+text = "Main Menu"
+
+[connection signal="pressed" from="Panel/NextLevelButton" to="." method="_on_next_level_button_pressed"]
+[connection signal="pressed" from="Panel/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

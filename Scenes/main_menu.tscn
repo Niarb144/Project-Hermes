@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bv7oetmd34dsi"]
+[gd_scene load_steps=7 format=3 uid="uid://bv7oetmd34dsi"]
 
-[ext_resource type="VideoStream" uid="uid://bw0wwf1k76jxi" path="res://Assets/Videos/menu.ogv" id="1_1ehe0"]
 [ext_resource type="Script" uid="uid://dartty6i8fbkb" path="res://Scenes/main_menu.gd" id="1_ce3w2"]
 [ext_resource type="AudioStream" uid="uid://wsq7fnul4lbq" path="res://Assets/Audio/Pufino - Rock Me Now (freetouse.com).mp3" id="2_ce3w2"]
+[ext_resource type="VideoStream" uid="uid://f1sf502e1j0a" path="res://Assets/Videos/menu_bg.ogv" id="2_n45e2"]
 [ext_resource type="FontFile" uid="uid://75i2xeboijlb" path="res://Assets/Fonts/Audiowide-Regular.ttf" id="3_n45e2"]
+[ext_resource type="Texture2D" uid="uid://o34oglkp2i3c" path="res://Assets/Player/xerxes1.png" id="3_opfnp"]
 [ext_resource type="Texture2D" uid="uid://bjaa8sb267c3f" path="res://Assets/Environment/background.png" id="5_n45e2"]
 
 [node name="MainMenu" type="Control"]
@@ -20,9 +21,16 @@ offset_top = -42.999996
 offset_right = 1828.0
 offset_bottom = 1037.0
 scale = Vector2(0.7, 0.7)
-stream = ExtResource("1_1ehe0")
+stream = ExtResource("2_n45e2")
+speed_scale = 4.0
 autoplay = true
 loop = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(808, 307.00003)
+rotation = -0.72611374
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_opfnp")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ce3w2")
@@ -89,7 +97,7 @@ PAUSE       → Esc"
 layout_mode = 0
 offset_left = 6.0
 offset_top = 277.0
-offset_right = 81.0
+offset_right = 101.0
 offset_bottom = 316.0
 theme_override_fonts/font = ExtResource("3_n45e2")
 theme_override_font_sizes/font_size = 24

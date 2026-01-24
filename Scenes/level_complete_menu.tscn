@@ -8,6 +8,7 @@ process_mode = 2
 script = ExtResource("1_n8sh4")
 
 [node name="Panel" type="Panel" parent="."]
+process_mode = 3
 offset_right = 40.0
 offset_bottom = 40.0
 

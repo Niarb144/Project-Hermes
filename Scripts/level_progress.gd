@@ -16,3 +16,4 @@ func save_progress(level: int):
 	var config := ConfigFile.new()
 	config.set_value("progress", "highest_level", highest_unlocked_level)
 	config.save(SAVE_PATH)
+ 

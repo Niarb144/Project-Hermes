@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@export var level_manager: Node
+@export var level_manager: NodePath
 
 @onready var next_button := $Panel/NextLevelButton
 @onready var menu_button := $Panel/MainMenuButton
@@ -14,11 +14,13 @@ func show_menu():
 	show()
 	get_tree().paused = true
 
-func _on_next_level_button_pressed() -> void:
+func _on_next_level_button_pressed():
 	get_tree().paused = false
-	level_manager.load_next_level()
+	var lm = get_node_or_null(level_manager)
+	if lm:
+		lm.load_next_level()
 
 
-func _on_main_menu_button_pressed() -> void:
+func _on_main_menu_button_pressed():
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")

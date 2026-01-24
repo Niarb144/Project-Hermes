@@ -35,7 +35,7 @@ level_complete_menu = NodePath("../LevelCompleteMenu")
 
 [node name="PauseMenu" parent="." instance=ExtResource("7_k7acu")]
 
-[node name="LevelCompleteMenu" parent="." node_paths=PackedStringArray("level_manager") instance=ExtResource("8_5v1tr")]
+[node name="LevelCompleteMenu" parent="." instance=ExtResource("8_5v1tr")]
 level_manager = NodePath("../LevelManager")
 
 [node name="GameOverUI" parent="." instance=ExtResource("7_o06y3")]

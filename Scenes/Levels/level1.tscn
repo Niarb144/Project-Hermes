@@ -1,0 +1,35 @@
+[gd_scene load_steps=10 format=3 uid="uid://bkdqkr0ts3183"]
+
+[ext_resource type="PackedScene" uid="uid://08rtuo4m7ht0" path="res://Scenes/background.tscn" id="1_hkfpk"]
+[ext_resource type="PackedScene" uid="uid://bqgikjg4h2sog" path="res://Scenes/star_field.tscn" id="2_ir7pk"]
+[ext_resource type="PackedScene" uid="uid://eomq2mmuv6st" path="res://Scenes/player.tscn" id="3_ilsv2"]
+[ext_resource type="PackedScene" uid="uid://bj155npdqbgjm" path="res://Scenes/enemy_spawner.tscn" id="4_4f2fw"]
+[ext_resource type="PackedScene" uid="uid://bwadn886h2j3n" path="res://Scenes/level_manager.tscn" id="5_8r8ce"]
+[ext_resource type="PackedScene" uid="uid://ba2ibyjwtghn3" path="res://Scenes/hud.tscn" id="6_nqasx"]
+[ext_resource type="PackedScene" uid="uid://bk4ov78wur0xf" path="res://Scenes/pause_menu.tscn" id="7_ryjqc"]
+[ext_resource type="PackedScene" uid="uid://mpr0es01i6p4" path="res://Scenes/level_complete_menu.tscn" id="8_xe7un"]
+[ext_resource type="PackedScene" uid="uid://s5d24gt1pmvx" path="res://Scenes/game_over_ui.tscn" id="9_v3vqe"]
+
+[node name="Level1" type="Node2D"]
+
+[node name="Background" parent="." instance=ExtResource("1_hkfpk")]
+
+[node name="StarField" parent="." instance=ExtResource("2_ir7pk")]
+
+[node name="Player" parent="." instance=ExtResource("3_ilsv2")]
+
+[node name="EnemySpawner" parent="." instance=ExtResource("4_4f2fw")]
+
+[node name="LevelManager" parent="." node_paths=PackedStringArray("hud", "game_over_ui", "level_complete_menu") instance=ExtResource("5_8r8ce")]
+hud = NodePath("../HUD")
+game_over_ui = NodePath("../GameOverUI")
+level_complete_menu = NodePath("../LevelCompleteMenu")
+next_level_path = "res://Scenes/Levels/level_2.tscn"
+
+[node name="HUD" parent="." instance=ExtResource("6_nqasx")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("7_ryjqc")]
+
+[node name="LevelCompleteMenu" parent="." instance=ExtResource("8_xe7un")]
+
+[node name="GameOverUI" parent="." instance=ExtResource("9_v3vqe")]
